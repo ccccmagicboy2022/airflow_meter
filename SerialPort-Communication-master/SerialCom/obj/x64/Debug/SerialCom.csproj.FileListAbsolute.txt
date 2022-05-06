@@ -1,0 +1,10 @@
+D:\Users\Administrator\Downloads\SerialPort-Communication-master\SerialPort-Communication-master\SerialCom\bin\x64\Debug\SerialCom.exe.config
+D:\Users\Administrator\Downloads\SerialPort-Communication-master\SerialPort-Communication-master\SerialCom\bin\x64\Debug\SerialCom.exe
+D:\Users\Administrator\Downloads\SerialPort-Communication-master\SerialPort-Communication-master\SerialCom\bin\x64\Debug\SerialCom.pdb
+D:\Users\Administrator\Downloads\SerialPort-Communication-master\SerialPort-Communication-master\SerialCom\obj\x64\Debug\SerialCom.csproj.AssemblyReference.cache
+D:\Users\Administrator\Downloads\SerialPort-Communication-master\SerialPort-Communication-master\SerialCom\obj\x64\Debug\SerialCom.MainForm.resources
+D:\Users\Administrator\Downloads\SerialPort-Communication-master\SerialPort-Communication-master\SerialCom\obj\x64\Debug\SerialCom.Properties.Resources.resources
+D:\Users\Administrator\Downloads\SerialPort-Communication-master\SerialPort-Communication-master\SerialCom\obj\x64\Debug\SerialCom.csproj.GenerateResource.cache
+D:\Users\Administrator\Downloads\SerialPort-Communication-master\SerialPort-Communication-master\SerialCom\obj\x64\Debug\SerialCom.csproj.CoreCompileInputs.cache
+D:\Users\Administrator\Downloads\SerialPort-Communication-master\SerialPort-Communication-master\SerialCom\obj\x64\Debug\SerialCom.exe
+D:\Users\Administrator\Downloads\SerialPort-Communication-master\SerialPort-Communication-master\SerialCom\obj\x64\Debug\SerialCom.pdb
