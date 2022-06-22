@@ -1,0 +1,71 @@
+#ifndef _SPI_MS10XX_H_
+#define _SPI_MS10XX_H_
+
+//MS1022 REG SET
+#define ANZ_FIRE      
+
+
+#define REGO_SET      0x830B6801
+#define REG1_SET      0x2144c002      
+#define REG2_SET      0xa01e0003       
+#define REG3_SET      0xf0920704       
+#define REG4_SET      0x20002005       
+#define REG5_SET      0x50000006       
+#define REG6_SET      0xc0c06007 
+
+#define SSN_1             P6OUT |= BIT4; //P2.4=1
+#define SSN_0             P6OUT &= (uint8_t)~BIT4;//P2.4=0
+
+#define SCK_1             P6OUT |= BIT3; //P2.5=1
+#define SCK_0             P6OUT &= (uint8_t)~BIT3;//P2.5=0
+
+#define SI_1              P6OUT |= BIT2; //P2.6=1
+#define SI_0              P6OUT &= (uint8_t)~BIT2;//P2.6=0
+
+#define SO_0_1		  (P6IN&BIT0)		//端口电平查询
+
+extern void SPI_WRITE8(uint8_t wbuf8);
+
+extern void SPI_WriteData(uint8_t *WriteData,uint8_t WriteCnt);
+extern void SPI_ReadData(uint8_t *ReadData,uint8_t ReadCnt);
+extern void Read_MS1022_ID(void);
+extern void MS1022_Config(void);
+extern void Write_Reg(uint8_t RegNum,uint32_t RegData);
+
+extern uint32_t Read_Reg(uint8_t RegNum);
+
+extern uint8_t  Read_PW1ST(void);
+extern uint8_t  Read_REG_1(void);
+
+extern void Read_Temp(void);
+
+extern uint16_t Read_STAT(void);
+
+//extern uint16_t Read_STAT(void);
+extern void Read_MS1022_ID(void);
+extern void Write_Order(uint8_t Order,uint8_t Order_Num);
+extern void MS1022_Result_Process(void);
+
+#define INIT                     0X01
+#define POWER_ON_RESET           0X02
+#define START_TOF                0X03
+#define START_TEMP               0X04
+#define START_CAL_RESONATOR      0X05
+#define START_CAL_TDC            0X06
+#define START_TOF_RESTART        0X07
+#define START_TEMP_RESTART       0X08
+
+#define Init()                   Write_Order(0X70,INIT)
+#define Power_On_Reset()         Write_Order(0X50,POWER_ON_RESET)         
+#define Start_TOF()              Write_Order(0X01,START_TOF)
+#define Start_Temp()             Write_Order(0X02,START_TEMP)
+#define Start_Cal_Resonator()    Write_Order(0X03,START_CAL_RESONATOR)
+#define Start_Cal_TDC()          Write_Order(0X04,START_CAL_TDC)
+#define Start_TOF_Restart()      Write_Order(0X05,START_TOF_RESTART)
+#define Start_Temp_Restart()     Write_Order(0X06,START_TEMP_RESTART)
+
+
+
+
+
+#endif

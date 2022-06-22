@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>3094062385</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\src\lcd_key.h</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\init.pbi</file>
+      <file>$PROJ_DIR$\src\headerfile.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\soft_uart.r43</file>
+      <file>$PROJ_DIR$\src\init.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\i2c.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\variable.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\soft_uart.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\it.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\spi_ms10xx.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\lcd_key.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\io430x44x.h</file>
+      <file>$PROJ_DIR$\src\variable.h</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$TOOLKIT_DIR$\inc\io430.h</file>
+      <file>$PROJ_DIR$\src\spi_ms10xx.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\MS1030_METER.pbd</file>
+      <file>$PROJ_DIR$\Debug\Obj\i2c.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\spi_ms10xx.r43</file>
+      <file>$PROJ_DIR$\Debug\Exe\MS1030_METER.d43</file>
+      <file>$PROJ_DIR$\Debug\Exe\MS1030_METER.ulp</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430fn.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\variable.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\init.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\it.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\lcd_key.r43</file>
+      <file>$PROJ_DIR$\src\i2c.h</file>
+      <file>$TOOLKIT_DIR$\inc\io430x14x.h</file>
+      <file>$TOOLKIT_DIR$\inc\msp430x44x.h</file>
+      <file>$PROJ_DIR$\src\lcd_key.c</file>
+      <file>$PROJ_DIR$\src\soft_uart.c</file>
+      <file>$PROJ_DIR$\src\spi_ms10xx.c</file>
+      <file>$PROJ_DIR$\src\variable.c</file>
+      <file>$PROJ_DIR$\src\main.c</file>
+      <file>$PROJ_DIR$\src\init.c</file>
+      <file>$PROJ_DIR$\src\it.c</file>
+      <file>$PROJ_DIR$\src\i2c.c</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 21</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 4</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 17 14 5</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 17 31 5</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>ULP430</name>
+          <file> 24</file>
+        </tool>
+        <tool>
+          <name>XLINK</name>
+          <file> 23</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\MS1030_METER.d43</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 8 27 11 29 4 6 22 26 25</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\lcd_key.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 13</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 29</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 7 32 0 16 15 18 30 3 5</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 3 32 16 5 15 7 18 0 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\soft_uart.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 10</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 6</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 3 32 16 5 15 7 18 0 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\spi_ms10xx.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 12</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 22</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 7 32 0 16 15 18 30 3 5</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 3 32 16 5 15 7 18 0 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\variable.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 9</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 26</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 16 18 15 30 32 7 0 3 5</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 3 32 16 5 15 7 18 0 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 21</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 4</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 7 32 0 16 15 18 30 3 5</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 3 32 16 5 15 7 18 0 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\init.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 27</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 7 32 0 16 15 18 30 3 5</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 3 32 16 5 15 7 18 0 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\it.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 28</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 11</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 16 15 30 32 7 0 3 5</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 3 32 16 5 15 7 18 0 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\i2c.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 20</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 8</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 16 30 5 32</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 32 16 5 30</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+
