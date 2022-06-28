@@ -7,4 +7,6 @@ https://www.gadgetronicx.com/ultrasonic-receiver-circuit/
 https://www.cnblogs.com/kinson/p/8011536.html
 https://nddmed.com/pulmonary-function-test-solutions/ndd-pft-technology
 
+PTAV2.pdf为PTA_V2.0板的抄板原理图
+
 
