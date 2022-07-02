@@ -1,0 +1,4 @@
+.\airflow_meter_b_board_app(KEIL5)(AC6)(flashcode)(N32)(OK?)(128MHz)
+.\bootloader(KEIL5)(AC6)(flashcode)(ramcode)(N32)(OK?)(128MHz)
+
+
