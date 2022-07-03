@@ -1,0 +1,10 @@
+usb
+si swd
+device N32G4FRKE
+speed 25000
+r
+h
+go
+qc
+
+
