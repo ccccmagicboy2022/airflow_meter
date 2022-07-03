@@ -16,8 +16,6 @@ class App
 	public:
 		volatile enum app_state m_state;	//状态机变量
 		volatile enum app_state m_next_state;	//状态机变量的下一个状态
-		
-        FIFO_DataType m_tempData[BLOCK_TRANSFER_SIZE];
     
 	public:
         App();
