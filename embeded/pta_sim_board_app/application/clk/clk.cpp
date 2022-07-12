@@ -10,11 +10,12 @@ Clk::Clk()
         
     RCC_EnableAHBPeriphClk(RCC_AHB_PERIPH_ADC1, ENABLE);
     RCC_EnableAHBPeriphClk(RCC_AHB_PERIPH_ADC2, ENABLE);
+    RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_DAC, ENABLE);
     RCC_EnableAHBPeriphClk(RCC_AHB_PERIPH_DMA1, ENABLE);
     
     RCC_ConfigPclk1(RCC_HCLK_DIV4);     //APB1 CLK      144/4=36MHz(max p86)
     RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_TIM1, ENABLE);      //timer1 72*2=144MHz
-    RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOA, ENABLE);     //PA10
+    RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOA, ENABLE);     //PA10£¬PA4
     
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_TIM2, ENABLE);      //timer2 72MHz not use
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_TIM3, ENABLE);      //not use

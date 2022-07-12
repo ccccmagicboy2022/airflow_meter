@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>N32G4FR, USE_STDPERIPH_DRIVER, SYSCLK_FREQ=128000000,USE_DEVICE_DRIVER_LIB,_CC_ARM,ARM_MATH_CM4,SYSCLK_SRC=SYSCLK_USE_HSI_PLL</Define>
               <Undefine></Undefine>
-              <IncludePath>..\application\app;..\application\HardFaultHandlerMDK;..\application\rtt;..\cmsis;..\common;..\driver\Inc;..\source;..\bsp\inc;..\application\nr_micro_shell;..\application\EventRecorder;..\application\fifo;..\application\bsp;..\application\adc;..\application\hardware;..\application\uart;..\application\clk;..\application\do;..\application\DWTDelay;..\application\shell;..\application\app;..\application\systick;..\application\log</IncludePath>
+              <IncludePath>..\application\app;..\application\HardFaultHandlerMDK;..\application\rtt;..\cmsis;..\common;..\driver\Inc;..\source;..\bsp\inc;..\application\nr_micro_shell;..\application\EventRecorder;..\application\fifo;..\application\bsp;..\application\adc;..\application\hardware;..\application\uart;..\application\clk;..\application\do;..\application\DWTDelay;..\application\shell;..\application\app;..\application\systick;..\application\log;..\application\dac</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -437,6 +437,11 @@
               <FileName>systick.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\application\systick\systick.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>dac.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\application\dac\dac.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1000,7 +1005,7 @@
               <MiscControls></MiscControls>
               <Define>VECT_TAB_SRAM,N32G4FR, USE_STDPERIPH_DRIVER, SYSCLK_FREQ=128000000,USE_DEVICE_DRIVER_LIB,_CC_ARM,ARM_MATH_CM4,SYSCLK_SRC=SYSCLK_USE_HSI_PLL</Define>
               <Undefine></Undefine>
-              <IncludePath>..\application\app;..\application\HardFaultHandlerMDK;..\application\rtt;..\cmsis;..\common;..\driver\Inc;..\source;..\bsp\inc;..\application\hardware;..\application\nr_micro_shell;..\application\adc;..\application\EventRecorder;..\application\fifo;..\application\uart;..\application\clk;..\application\do;..\application\DWTDelay;..\application\shell;..\application\bsp;..\application\systick;..\application\log</IncludePath>
+              <IncludePath>..\application\app;..\application\HardFaultHandlerMDK;..\application\rtt;..\cmsis;..\common;..\driver\Inc;..\source;..\bsp\inc;..\application\hardware;..\application\nr_micro_shell;..\application\adc;..\application\EventRecorder;..\application\fifo;..\application\uart;..\application\clk;..\application\do;..\application\DWTDelay;..\application\shell;..\application\bsp;..\application\systick;..\application\log;..\application\dac</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1098,6 +1103,11 @@
               <FileName>systick.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\application\systick\systick.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>dac.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\application\dac\dac.cpp</FilePath>
             </File>
           </Files>
         </Group>

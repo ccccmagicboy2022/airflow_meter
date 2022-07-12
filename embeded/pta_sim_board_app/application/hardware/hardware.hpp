@@ -2,18 +2,14 @@
 #define _D112205B_D20C_4521_BC21_7E1E7A1955E5_
 
 #include "clk.hpp"
-#include "adc.hpp"
 #include "uart.hpp"
-#include "do.hpp"
+#include "dac.hpp"
 
 class Hardware {
 	public:
         Clk rcc;
-		Uart uart3;		//serial
-		Do enrf;		//enable rf
-		Do enop;		//enable op
-		Do out;			//gpio output
-		Do led;			//led output
+        Uart uart3;		//serial to usb
+        Dac dac_ch1;
 		
 	public:
         Hardware();

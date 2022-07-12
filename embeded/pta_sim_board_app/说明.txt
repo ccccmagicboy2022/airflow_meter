@@ -1,8 +1,7 @@
 1. n32基本工程模板(keil5)-使用片内时钟作源pll到128MHz
-2. USART：TX - PB10，RX - PB11，波特率115200
-3. SysTick：时钟滴答配置为1MS
-4. shell: nr_micro_shell(https://github.com/Nrusher/nr_micro_shell)
-5. 使用cpp做框架
-6. 匹配硬件：PTA_SIM(v1.0)
+2. SysTick：时钟滴答配置为1MS
+3. shell: nr_micro_shell(https://github.com/Nrusher/nr_micro_shell)
+4. 使用cpp做框架
+5. 匹配硬件：PTA_SIM(v1.0)
 
 

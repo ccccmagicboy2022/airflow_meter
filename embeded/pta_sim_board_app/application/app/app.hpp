@@ -5,7 +5,7 @@
 
 enum app_state
 {
-	UART_SEND_DATA=0,
+	SIM_WITH_DAC=0,
 	IDLE,
 	UART_PROTOCOL,
 	ERROR_ERROR,
@@ -17,17 +17,17 @@ class App
 		volatile enum app_state m_state;	//状态机变量
 		volatile enum app_state m_next_state;	//状态机变量的下一个状态
 		
-        FIFO_DataType m_tempData[BLOCK_TRANSFER_SIZE];
-    
 	public:
         App();
         ~App();
 		
 		void run(void);
-        void sent_sample_data(void);
         void error_process(void);
         void uart_process(void);
         void idle_process(void);
+    
+    public:
+        void sim_pt100(void);
 	
 };
 
