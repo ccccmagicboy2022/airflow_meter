@@ -120,6 +120,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
+          <Name></Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -156,9 +157,25 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
+          <LineNumber>100</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134232760</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\application\app\app.cpp</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\flashcode\../application/app/app.cpp\100</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
           <LineNumber>144</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134232024</Address>
+          <Address>134232140</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -170,7 +187,7 @@
           <Expression>\\flashcode\../source/nr_micro_shell_commands.cpp\144</Expression>
         </Bp>
         <Bp>
-          <Number>1</Number>
+          <Number>2</Number>
           <Type>0</Type>
           <LineNumber>1454</LineNumber>
           <EnabledFlag>1</EnabledFlag>

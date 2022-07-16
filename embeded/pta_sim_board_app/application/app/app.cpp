@@ -43,49 +43,51 @@ void App::sim_pt100(void)
 {   
     //do something here!
     
-    static int i = 0;
-    unsigned short val = 0;
+    static int i = 162;
+    //unsigned short val = 162;
     
+    /*
     switch (i)
     {
         case    0:
-            val = 162;
+            //val = 162;      //30 C
+            val = 540;      //99 C
             break;
         case    1:
-            val = 540;
+            val = 560;      //99 C
             break;
         case    2:
-            val = 1110;
+            val = 580;
             break;
         case    3:
-            val = 1650;
+            val = 600;
             break;
         case    4:
-            val = 2190;
+            val = 620;
             break;
         case    5:
-            val = 2760;
+            val = 640;
             break;
         case    6:
             val = 3340;
             break;
         case    7:
-            val = 3600;
+            val = 3370;
             break;
         case    8:
-            val = 3340;
+            val = 3400;
             break;
         case    9:
-            val = 3600;
+            val = 3450;
             break;
         case    10:
-            val = 3340;
+            val = 3500;
             break;
         case    11:
-            val = 3600;
+            val = 3650;     //658 C
             break;
         default:
-            val = 3600;
+            val = 3650;
             break;
     }
     
@@ -93,14 +95,15 @@ void App::sim_pt100(void)
     {
         pta_sim.dac_ch1.set_dac_raw_value(val);
     }
+    */
+    
+    pta_sim.dac_ch1.set_dac_raw_value(i);
 
     CV_LOG("dac new output!!! - %d\r\n", i);
     
-    i++;
-    
-    if (12 == i)
+    if (3600 >= i)  //651 C
     {
-        //i = 0;
+        i++;
     }
     
     m_state = IDLE;
@@ -122,7 +125,7 @@ void App::uart_process(void)
 
 void App::idle_process(void)
 {
-    tick.delay_ms(2000);
+    tick.delay_ms(20);
     
 	m_state = m_next_state;
     m_next_state = SIM_WITH_DAC;

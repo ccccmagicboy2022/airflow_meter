@@ -12,6 +12,7 @@ void setup()
 {
     // put your setup code here, to run once:
     memory_init();
+    //tick.delay_ms(20000);
 }
 
 void loop()
