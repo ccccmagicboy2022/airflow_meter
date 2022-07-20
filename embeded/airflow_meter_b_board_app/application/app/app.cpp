@@ -58,8 +58,26 @@ void App::uart_process(void)
 	m_state = m_next_state;
 }
 
+void App::Write_Reg(uint8_t RegNum, uint32_t RegData)
+{
+    airflow_meter_b.spi_ss.low();
+    airflow_meter_b.spi1.write8(0x80|RegNum);
+    dwt.delay_us(10);
+    airflow_meter_b.spi1.write8(0x000000FF & RegData);
+    dwt.delay_us(10);
+    airflow_meter_b.spi1.write8((0x0000FF00 & RegData)>>8);
+    dwt.delay_us(10);
+    airflow_meter_b.spi1.write8((0x00FF0000 & RegData)>>16);
+    dwt.delay_us(10);
+    airflow_meter_b.spi1.write8((0xFF000000 & RegData)>>24);
+    dwt.delay_us(10);
+    airflow_meter_b.spi_ss.high();
+}
+
 void App::idle_process(void)
 {
+    uint8_t temp = 0;
+    
     //dwt.delay_ms(100);
     tick.delay_ms(100);
     
@@ -73,10 +91,7 @@ void App::idle_process(void)
     
     airflow_meter_b.led.toggle();
     
-    airflow_meter_b.spi_ss.low();
-    airflow_meter_b.spi1.write8(0xEB);
-    dwt.delay_us(10);
-    airflow_meter_b.spi_ss.high();
+    Write_Reg(0x0, 0x1E188930);
     
 	m_state = m_next_state;
     m_next_state = UART_SEND_DATA;
