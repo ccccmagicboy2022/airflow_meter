@@ -38,7 +38,7 @@
 
 /////////////////////////////////////////////////////////////////////////
 extern volatile uint32_t delay;
-
+extern uint8_t SPI_MASTER_Buffer_Rx[32];
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -170,3 +170,18 @@ void USART3_IRQHandler(void)
         shell(temp);
     }
 }
+
+void SPI2_IRQHandler(void)
+{
+    static unsigned int i = 0;
+    if (SPI_I2S_GetIntStatus(SPI1, SPI_I2S_INT_RNE) != RESET)
+    {
+        SPI_MASTER_Buffer_Rx[i++] = SPI_I2S_ReceiveData(SPI1);
+    }
+    else if (SPI_I2S_GetIntStatus(SPI1, SPI_I2S_INT_TE) == RESET)
+    {
+        //
+        i = 0;
+    }
+}
+

@@ -73,6 +73,11 @@ void App::idle_process(void)
     
     airflow_meter_b.led.toggle();
     
+    airflow_meter_b.spi_ss.low();
+    airflow_meter_b.spi1.write8(0xEB);
+    dwt.delay_us(10);
+    airflow_meter_b.spi_ss.high();
+    
 	m_state = m_next_state;
     m_next_state = UART_SEND_DATA;
 }

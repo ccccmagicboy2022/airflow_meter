@@ -4,6 +4,7 @@
 #include "clk.hpp"
 #include "uart.hpp"
 #include "do.hpp"
+#include "spi.hpp"
 
 class Hardware {
 	public:
@@ -11,7 +12,9 @@ class Hardware {
 		Uart uart3;		//serial to usb
 		Do led;			//onboard green led
         Do ms1030_rstn; //ms1030 reset
-		
+        Spi spi1;       //ms1030 spi
+        Do spi_ss;      //cs for spi
+    
 	public:
         Hardware();
         ~Hardware();
