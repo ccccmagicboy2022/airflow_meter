@@ -37,7 +37,7 @@
 #include "sys.h"
 #include "sys.hpp"
 
-extern Hardware hardware_n32_ch2840adx;
+extern Hardware airflow_meter_b;
 extern Systick tick;
 extern DWTDelay dwt;
 

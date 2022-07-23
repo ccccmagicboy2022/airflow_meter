@@ -6,6 +6,7 @@
 #include "uart.hpp"
 #include "do.hpp"
 #include "spi.hpp"
+#include "di.hpp"
 
 class Hardware {
 	public:

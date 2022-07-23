@@ -72,8 +72,10 @@ void App::idle_process(void)
     //log_error("Hello %s\r\n", "world");
     //log_fatal("Hello %s\r\n", "world");
     
-    airflow_meter_b.led.toggle();
+    airflow_meter_b.ms1030.MS1030_Flow();
     
 	m_state = m_next_state;
     m_next_state = UART_SEND_DATA;
 }
+
+

@@ -38,6 +38,8 @@
 
 /////////////////////////////////////////////////////////////////////////
 extern volatile uint32_t delay;
+extern uint8_t Intn_flag;
+
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -182,4 +184,15 @@ void SPI2_IRQHandler(void)
         i = 0;
     }
 }
+
+void EXTI9_5_IRQHandler(void)
+{
+    if (RESET != EXTI_GetITStatus(EXTI_LINE9))
+    {
+        //GPIOA->POD ^= GPIO_PIN_8;
+        Intn_flag = 1;
+        EXTI_ClrITPendBit(EXTI_LINE9);
+    }
+}
+
 

@@ -3,6 +3,7 @@
 
 #include "sys.h"
 #include "do.hpp"
+#include "di.hpp"
 
 enum spi_cmd
 {
@@ -55,6 +56,7 @@ class Spi {
     public:
         Do spi_ss;      //cs for spi
         Do spi_rstn;    //ms1030 reset
+        Di spi_int;     //ms1030 interrupt output
     
     public:
         void init_pin();
@@ -62,12 +64,18 @@ class Spi {
         void init_int();
         void write8(uint8_t wbuf8);
         uint8_t read8();
+        uint16_t read16();
         void init_ss_pin();
         void Write_Reg(uint8_t RegNum, uint32_t RegData);
-        void config();
+        uint8_t config();
         void init_rst_pin();
         void Write_Order(uint8_t Order);
         uint8_t Read_REG0_L();
+        uint16_t Read_STAT();
+        uint32_t MS1030_Flow(void);
+        void init_int_pin();
+    
+    
 };
 
 
