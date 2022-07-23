@@ -65,6 +65,7 @@ class Spi {
         void write8(uint8_t wbuf8);
         uint8_t read8();
         uint16_t read16();
+        uint32_t read32();
         void init_ss_pin();
         void Write_Reg(uint8_t RegNum, uint32_t RegData);
         uint8_t config();
@@ -72,8 +73,14 @@ class Spi {
         void Write_Order(uint8_t Order);
         uint8_t Read_REG0_L();
         uint16_t Read_STAT();
+        uint16_t Read_PW_First();
+        uint16_t Read_PW_STOP1();
+        uint32_t Read_Reg(uint8_t RegNum);
         uint32_t MS1030_Flow(void);
+        void MS1030_Temper(void);
+        void MS1030_Time_check(void);
         void init_int_pin();
+        uint32_t data_average(uint32_t *dtatzz,uint8_t num);
     
     
 };
