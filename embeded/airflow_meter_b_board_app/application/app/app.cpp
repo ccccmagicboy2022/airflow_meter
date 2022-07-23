@@ -58,40 +58,21 @@ void App::uart_process(void)
 	m_state = m_next_state;
 }
 
-void App::Write_Reg(uint8_t RegNum, uint32_t RegData)
-{
-    airflow_meter_b.spi_ss.low();
-    airflow_meter_b.spi1.write8(0x80|RegNum);
-    dwt.delay_us(10);
-    airflow_meter_b.spi1.write8(0x000000FF & RegData);
-    dwt.delay_us(10);
-    airflow_meter_b.spi1.write8((0x0000FF00 & RegData)>>8);
-    dwt.delay_us(10);
-    airflow_meter_b.spi1.write8((0x00FF0000 & RegData)>>16);
-    dwt.delay_us(10);
-    airflow_meter_b.spi1.write8((0xFF000000 & RegData)>>24);
-    dwt.delay_us(10);
-    airflow_meter_b.spi_ss.high();
-}
-
 void App::idle_process(void)
 {
     uint8_t temp = 0;
     
-    //dwt.delay_ms(100);
     tick.delay_ms(100);
     
-    log_set_level(LOG_ERROR);
+    log_set_level(LOG_INFO);
     log_trace("Hello %s\r\n", "world");
     log_debug("Hello %s\r\n", "world");
-    log_info("Hello %s\r\n", "world");
-    log_warn("Hello %s\r\n", "world");
-    log_error("Hello %s\r\n", "world");
-    log_fatal("Hello %s\r\n", "world");
+    //log_info("Hello %s\r\n", "world");
+    //log_warn("Hello %s\r\n", "world");
+    //log_error("Hello %s\r\n", "world");
+    //log_fatal("Hello %s\r\n", "world");
     
     airflow_meter_b.led.toggle();
-    
-    Write_Reg(0x0, 0x1E188930);
     
 	m_state = m_next_state;
     m_next_state = UART_SEND_DATA;

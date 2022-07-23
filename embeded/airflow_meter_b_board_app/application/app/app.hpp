@@ -26,8 +26,8 @@ class App
         void error_process(void);
         void uart_process(void);
         void idle_process(void);
-	public:
-        void Write_Reg(uint8_t RegNum, uint32_t RegData);
+    
+    
 };
 
 

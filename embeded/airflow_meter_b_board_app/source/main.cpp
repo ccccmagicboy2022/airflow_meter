@@ -12,6 +12,8 @@ void setup()
 {
     // put your setup code here, to run once:
     memory_init();
+    tick.delay_ms(10);  //initial wait for analog chip
+    airflow_meter_b.ms1030.config();
 }
 
 void loop()
