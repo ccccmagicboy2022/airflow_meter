@@ -372,8 +372,8 @@ uint32_t Spi::MS1030_Flow(void)
     
     time_up_down_result = data_average(time_up_down_diff, 8);
     
-    CV_LOG("time_up_down_result: 0x%08X\r\n", time_up_down_result);
-    log_info("time_up_down_result: 0x%08X\r\n", time_up_down_result);
+    //CV_LOG("time_up_down_result: 0x%08X\r\n", time_up_down_result);
+    //log_info("time_up_down_result: 0x%08X\r\n", time_up_down_result);
     
     return  time_up_down_result;
 }
@@ -432,7 +432,7 @@ uint8_t Spi::config()
     uint32_t REG4 = 0;
     uint8_t  SPI_check_temp = 0;
         
-    REG0=0x1E188930;      
+    REG0=0x0efe4930;      
     REG1=0xA00F0000; 
     REG2=0x83105187;     
     REG3=0x20928480;        

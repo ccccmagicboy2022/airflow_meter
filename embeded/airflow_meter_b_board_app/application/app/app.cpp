@@ -62,18 +62,18 @@ void App::idle_process(void)
 {
     uint8_t temp = 0;
     
-    tick.delay_ms(100);
+    //tick.delay_ms(10);
     
-    log_set_level(LOG_INFO);
-    log_trace("Hello %s\r\n", "world");
-    log_debug("Hello %s\r\n", "world");
+    //log_set_level(LOG_INFO);
+    //log_trace("Hello %s\r\n", "world");
+    //log_debug("Hello %s\r\n", "world");
     //log_info("Hello %s\r\n", "world");
     //log_warn("Hello %s\r\n", "world");
     //log_error("Hello %s\r\n", "world");
     //log_fatal("Hello %s\r\n", "world");
     
     airflow_meter_b.ms1030.MS1030_Flow();
-    airflow_meter_b.ms1030.MS1030_Temper();
+    //airflow_meter_b.ms1030.MS1030_Temper();
     //airflow_meter_b.ms1030.MS1030_Time_check();
     
 	m_state = m_next_state;
