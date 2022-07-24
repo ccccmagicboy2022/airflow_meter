@@ -15,6 +15,8 @@
 #include "bsp.h"
 #include "log.h"
 
+#include "arm_math.h"
+
 #define CV_LOG(fmt, ...) \
 do \
 { \

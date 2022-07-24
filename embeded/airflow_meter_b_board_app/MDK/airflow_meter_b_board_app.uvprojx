@@ -484,14 +484,14 @@
               <FilePath>..\application\nr_micro_shell\nr_micro_shell.c</FilePath>
             </File>
             <File>
-              <FileName>sys.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\sys.h</FilePath>
-            </File>
-            <File>
               <FileName>log.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\application\log\log.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\sys.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1160,14 +1160,14 @@
               <FilePath>..\application\nr_micro_shell\nr_micro_shell.c</FilePath>
             </File>
             <File>
-              <FileName>sys.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\sys.h</FilePath>
-            </File>
-            <File>
               <FileName>log.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\application\log\log.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\sys.h</FilePath>
             </File>
           </Files>
         </Group>

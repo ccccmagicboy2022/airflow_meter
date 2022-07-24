@@ -379,6 +379,21 @@ uint32_t Spi::MS1030_Flow(void)
     return  time_up_down_result;
 }
 
+float Calculate_Temp(float R)
+{
+    float A = 3.9083E-3;
+    float B = -5.775E-7;
+    float T;
+
+    // T = (0.0-A + sqrt((A*A)-4.0*B*(1.0-R)))/2.0*B;
+    // Break equation in small pieces
+    T = 0.0 - A;
+    T += sqrt((A * A)-4.0 * B * (1.0 - R));
+    T /= 2.0 * B;
+
+    return T;
+}
+
 void Spi::MS1030_Temper(void)
 {
     uint16_t Result_status = 0;
@@ -387,11 +402,6 @@ void Spi::MS1030_Temper(void)
     float pt1000_res = 0.0f;
     
     Write_Order(INITIAL);
-    Result_status = Read_STAT();
-    
-    //CV_LOG("status: 0x%04X\r\n", Result_status);
-    //log_info("status: 0x%04X\r\n", Result_status);
-    
     Write_Order(START_TEMP);
     
     while(Intn_flag == 0);
@@ -409,11 +419,12 @@ void Spi::MS1030_Temper(void)
     }
     
     pt1000_res = 1000*(Result_temperature_reg[1]>>16)/(Result_temperature_reg[0]>>16);
-    log_info("pt1000: %3.3lf\r\n", pt1000_res);
+    log_info("pt1000: %3.3lf-%3.3lf\r\n", pt1000_res, Calculate_Temp(pt1000_res));
 }
 
 void Spi::MS1030_Time_check(void)
 {
+    uint16_t Result_status = 0;
     uint32_t cal_reg = 0;
     
     Write_Order(INITIAL);
@@ -422,10 +433,14 @@ void Spi::MS1030_Time_check(void)
     while(Intn_flag == 0);
     Intn_flag = 0;           //glear flag
     
+    Result_status = Read_STAT();
+    
+    CV_LOG("status: 0x%04X\r\n", Result_status);
+    log_info("status: 0x%04X\r\n", Result_status);
+    
     cal_reg = Read_Reg(READ_CAL_REG);
     
-    CV_LOG("cal_reg: 0x%08X\r\n", cal_reg);
-    log_info("cal_reg: 0x%08X\r\n", cal_reg);
+    log_info("cal_reg: 0x%08X-%d-%lf\r\n", cal_reg, cal_reg>>16, 488.28125f);
 }
 
 uint8_t Spi::config()
@@ -437,11 +452,11 @@ uint8_t Spi::config()
     uint32_t REG4 = 0;
     uint8_t  SPI_check_temp = 0;
         
-    REG0=0x118a4920;
-    REG1=0xe0000000;
+    REG0=0x118a4930;
+    REG1=0xa00f0000;
     REG2=0x00000000;
     REG3=0x00000000;
-    REG4=0x468c0500;
+    REG4=0x46cc0500;    
     
     spi_rstn.high();
     dwt.delay_us(1);
