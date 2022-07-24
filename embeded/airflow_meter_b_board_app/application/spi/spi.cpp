@@ -333,7 +333,7 @@ uint32_t Spi::MS1030_Flow(void)
     while(Intn_flag == 0);
     Intn_flag = 0;           //glear flag
     
-    GPIOA->POD ^= GPIO_PIN_8;//blink green on board led
+    //GPIOA->POD ^= GPIO_PIN_8;//blink green on board led
     
     Result_status = Read_STAT();
     //CV_LOG("status: 0x%04X\r\n", Result_status);
@@ -374,7 +374,7 @@ uint32_t Spi::MS1030_Flow(void)
     time_up_down_result = data_average(time_up_down_diff, 8);
     
     //CV_LOG("time_up_down_result: 0x%08X\r\n", time_up_down_result);
-    //log_info("time_up_down_result: 0x%08X\r\n", time_up_down_result);
+    log_info("time_up_down_result: 0x%08X\r\n", time_up_down_result);
     
     return  time_up_down_result;
 }
@@ -416,10 +416,10 @@ void Spi::MS1030_Time_check(void)
 {
     uint32_t cal_reg = 0;
     
+    Write_Order(INITIAL);
     Write_Order(START_CAL_RESONATOR);
     
     while(Intn_flag == 0);
-    dwt.delay_ms(20);
     Intn_flag = 0;           //glear flag
     
     cal_reg = Read_Reg(READ_CAL_REG);
@@ -437,11 +437,11 @@ uint8_t Spi::config()
     uint32_t REG4 = 0;
     uint8_t  SPI_check_temp = 0;
         
-    REG0=0x0ec64930;      
-    REG1=0xA00F0000; 
-    REG2=0x83105187;     
-    REG3=0x20928480;        
-    REG4=0x47EC0500;
+    REG0=0x118a4920;
+    REG1=0xe0000000;
+    REG2=0x00000000;
+    REG3=0x00000000;
+    REG4=0x468c0500;
     
     spi_rstn.high();
     dwt.delay_us(1);

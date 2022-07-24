@@ -62,7 +62,7 @@ void App::idle_process(void)
 {
     //uint8_t temp = 0;
     
-    //tick.delay_ms(10);
+    //tick.delay_ms(1000);
     
     //log_set_level(LOG_INFO);
     //log_trace("Hello %s\r\n", "world");
@@ -73,8 +73,8 @@ void App::idle_process(void)
     //log_fatal("Hello %s\r\n", "world");
     
     airflow_meter_b.ms1030.MS1030_Flow();
-    //airflow_meter_b.ms1030.MS1030_Temper();       //should slow freq check??
-    //airflow_meter_b.ms1030.MS1030_Time_check();  //oneshut??
+    //airflow_meter_b.ms1030.MS1030_Temper();       //ok
+    //airflow_meter_b.ms1030.MS1030_Time_check();     //ok
     
 	m_state = m_next_state;
     m_next_state = UART_SEND_DATA;
