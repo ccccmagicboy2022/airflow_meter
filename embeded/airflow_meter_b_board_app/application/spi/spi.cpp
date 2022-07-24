@@ -59,6 +59,7 @@ void Spi::init_spi()
     SPI_InitStructure.CLKPHA        = SPI_CLKPHA_SECOND_EDGE;
     SPI_InitStructure.NSS           = SPI_NSS_HARD;
     SPI_InitStructure.BaudRatePres  = SPI_BR_PRESCALER_16;   //  64/16=4MHz
+    //SPI_InitStructure.BaudRatePres  = SPI_BR_PRESCALER_8;   //  64/8=8MHz
     SPI_InitStructure.FirstBit      = SPI_FB_MSB;       //MSB first
     SPI_InitStructure.CRCPoly       = 7;
     
@@ -350,13 +351,13 @@ uint32_t Spi::MS1030_Flow(void)
     {
         Result_up_reg[i] = Read_Reg(READ_TOF_UP_STOP1 + i);
     }
-    Result_up_sum = Read_Reg(READ_TOF_UP_STOP1 + i);
+    //Result_up_sum = Read_Reg(READ_TOF_UP_STOP1 + i);
     
     for(i=0;i<8;i++)
     {
         Result_down_reg[i] = Read_Reg(READ_TOF_DOWN_STOP1 + i);
     }
-    Result_down_sum = Read_Reg(READ_TOF_DOWN_STOP1 + i);
+    //Result_down_sum = Read_Reg(READ_TOF_DOWN_STOP1 + i);
     
     for(i=0;i<8;i++)
     {
@@ -383,6 +384,7 @@ void Spi::MS1030_Temper(void)
     uint16_t Result_status = 0;
     uint32_t Result_temperature_reg[4] = {0};
     uint8_t i = 0;
+    float pt1000_res = 0.0f;
     
     Write_Order(INITIAL);
     Result_status = Read_STAT();
@@ -405,6 +407,9 @@ void Spi::MS1030_Temper(void)
         //CV_LOG("pt[%d]: 0x%08X\r\n", i+1, Result_temperature_reg[i]);
         //log_info("pt[%d]: 0x%08X\r\n", i+1, Result_temperature_reg[i]);
     }
+    
+    pt1000_res = 1000*(Result_temperature_reg[1]>>16)/(Result_temperature_reg[0]>>16);
+    log_info("pt1000: %3.3lf\r\n", pt1000_res);
 }
 
 void Spi::MS1030_Time_check(void)
@@ -432,7 +437,7 @@ uint8_t Spi::config()
     uint32_t REG4 = 0;
     uint8_t  SPI_check_temp = 0;
         
-    REG0=0x0efe4930;      
+    REG0=0x0ec64930;      
     REG1=0xA00F0000; 
     REG2=0x83105187;     
     REG3=0x20928480;        
