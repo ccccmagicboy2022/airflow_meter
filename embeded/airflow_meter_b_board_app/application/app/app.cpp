@@ -60,6 +60,10 @@ void App::uart_process(void)
 
 void App::idle_process(void)
 {
+    float cal_rate = 0.0f;
+    float temperature = 0.0f;
+    float flow = 0.0f;
+    
     //uint8_t temp = 0;
     
     //tick.delay_ms(1000);
@@ -72,9 +76,16 @@ void App::idle_process(void)
     //log_error("Hello %s\r\n", "world");
     //log_fatal("Hello %s\r\n", "world");
     
-    //airflow_meter_b.ms1030.MS1030_Flow();
-    //airflow_meter_b.ms1030.MS1030_Temper();       //ok
-    airflow_meter_b.ms1030.MS1030_Time_check();     //ok
+    flow = airflow_meter_b.ms1030.MS1030_Flow();        //basic ok
+    //log_info("flow: %3.5lf\r\n", flow);
+    
+    temperature = airflow_meter_b.ms1030.MS1030_Temper();       //ok
+    //log_info("PT1000 temperature: %3.5lf\r\n", temperature);
+    
+    //cal_rate = airflow_meter_b.ms1030.MS1030_Time_check();     //ok
+    //log_info("cal_rate: %3.5lf\r\n", cal_rate);
+    
+    printf("/*airflow_meter_b,%.5lf,%.5lf*/", flow, temperature);
     
 	m_state = m_next_state;
     m_next_state = UART_SEND_DATA;

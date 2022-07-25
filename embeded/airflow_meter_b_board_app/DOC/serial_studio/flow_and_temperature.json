@@ -2,51 +2,19 @@
    "t":"%1",
    "g":[
       {
-         "t":"CD2840ADX",
+         "t":"airflow_meter_b_board_app",
          "d":[
             {
-               "t":"distance",
+               "t":"flow",
                "v":"%2",
                "g":true,
-               "u":"m",
-               "min":0,
-               "max":2.2,
-               "w":"bar"
+               "u":"us"
             },
             {
-               "t":"speed",
+               "t":"temperature",
                "v":"%3",
                "g":true,
-               "u":"m/s",
-               "min":-2,
-               "max":2,
-               "w":"bar"
-            },
-            {
-               "t":"state",
-               "v":"%4",
-               "g":true,
-               "u":""
-            },
-            {
-               "t":"diff",
-               "v":"%5",
-               "g":true,
-               "u":"ms"
-            },
-            {
-               "t":"amplitude",
-               "v":"%6",
-               "g":true,
-               "u":""
-            },
-            {
-               "t":"calc_time",
-               "v":"%7",
-               "g":true,
-               "u":"ms",
-               "min":0,
-               "max":30
+               "u":"c"
             }
          ]
       }

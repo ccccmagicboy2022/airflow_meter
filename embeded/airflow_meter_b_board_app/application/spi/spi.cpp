@@ -416,7 +416,7 @@ uint32_t Spi::data_average(uint32_t *dtatzz,uint8_t num) /*¶¨ÒåÁ½¸ö²ÎÊý£ºÊý×éÊ×µ
       return data_temp0;
 }
 
-uint32_t Spi::MS1030_Flow(void)
+float Spi::MS1030_Flow(void)
 {
     uint32_t time_up_down_result = 0;
     uint16_t Result_status = 0;
@@ -429,6 +429,8 @@ uint32_t Spi::MS1030_Flow(void)
     uint32_t Result_down_sum = 0;
     uint32_t time_up_down_diff[8] = {0};
     
+    float flow_result = 0.0f;
+    
     Write_Order(INITIAL);
     
     Write_Order(START_TOF_RESTART);
@@ -439,8 +441,8 @@ uint32_t Spi::MS1030_Flow(void)
     //GPIOA->POD ^= GPIO_PIN_8;//blink green on board led
     
     Result_status = Read_STAT();
-    //CV_LOG("status: 0x%04X\r\n", Result_status);
-    //log_info("status: 0x%04X\r\n", Result_status);
+    CV_LOG("status: 0x%04X\r\n", Result_status);
+    log_info("status: 0x%04X\r\n", Result_status);
     
     Result_PW_First = Read_PW_First();
     //CV_LOG("PW_First: 0x%04X\r\n", Result_PW_First);
@@ -477,12 +479,14 @@ uint32_t Spi::MS1030_Flow(void)
     time_up_down_result = data_average(time_up_down_diff, 8);
     
     //CV_LOG("time_up_down_result: 0x%08X\r\n", time_up_down_result);
-    log_info("time_up_down_result: 0x%08X\r\n", time_up_down_result);
+    //log_info("time_up_down_result: 0x%08X - %3.5lfus\r\n", time_up_down_result, (float)time_up_down_result/65536.0f);
     
-    return  time_up_down_result;
+    flow_result = (float)time_up_down_result/65536.0f/2.0f;
+    
+    return  flow_result;
 }
 
-void Spi::MS1030_Temper(void)
+float Spi::MS1030_Temper(void)
 {
     uint16_t Result_status = 0;
     uint32_t Result_temperature_reg[4] = {0};
@@ -497,8 +501,8 @@ void Spi::MS1030_Temper(void)
     Intn_flag = 0;           //glear flag
     
     Result_status = Read_STAT();
-    //CV_LOG("status: 0x%04X\r\n", Result_status);
-    //log_info("status: 0x%04X\r\n", Result_status);
+    CV_LOG("status: 0x%04X\r\n", Result_status);
+    log_info("status: 0x%04X\r\n", Result_status);
     
     for(i=0;i<4;i++)
     {
@@ -518,10 +522,10 @@ void Spi::MS1030_Temper(void)
         }
     }
     
-    log_info("pt1000 res-c: %3.3lf-%3.3lf\r\n", pt1000_res, pt1000_c);
+    return pt1000_c;
 }
 
-void Spi::MS1030_Time_check(void)
+float Spi::MS1030_Time_check(void)
 {
     uint16_t Result_status = 0;
     uint32_t cal_reg = 0;
@@ -538,8 +542,8 @@ void Spi::MS1030_Time_check(void)
     log_info("status: 0x%04X\r\n", Result_status);
     
     cal_reg = Read_Reg(READ_CAL_REG);
-    
-    log_info("cal_reg (rate): 0x%08X (%lf)\r\n", cal_reg, (float)cal_reg/65536.0f/488.28125f);
+        
+    return (float)cal_reg/65536.0f/488.28125f;
 }
 
 uint8_t Spi::config()

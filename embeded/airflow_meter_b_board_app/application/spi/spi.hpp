@@ -76,13 +76,12 @@ class Spi {
         uint16_t Read_PW_First();
         uint16_t Read_PW_STOP1();
         uint32_t Read_Reg(uint8_t RegNum);
-        uint32_t MS1030_Flow(void);
-        void MS1030_Temper(void);
-        void MS1030_Time_check(void);
         void init_int_pin();
         uint32_t data_average(uint32_t *dtatzz,uint8_t num);
-    
-    
+    public:
+        float MS1030_Flow(void);
+        float MS1030_Temper(void);
+        float MS1030_Time_check(void);
 };
 
 
