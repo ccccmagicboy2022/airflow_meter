@@ -10,18 +10,14 @@ Systick tick;
 
 void setup()
 {
+    uint8_t test_reg = 0x00;
     // put your setup code here, to run once:
     memory_init();
     tick.delay_ms(10);  //initial wait for analog chip
-    if (0x30 == airflow_meter_b.ms1030.config())
-    {
-        log_info("ms1030 config ok!!!\r\n");
-    }
-    else
-    {
-        log_info("ms1030 config failed!!!\r\n");
-    }
     
+    test_reg = airflow_meter_b.ms1030.config();
+    
+    log_info("ms1030 config test byte: 0x%02X\r\n", test_reg);
 }
 
 void loop()

@@ -117,6 +117,8 @@ Spi::Spi()
     init_ss_pin();
     init_rst_pin();
     init_int_pin();
+    
+    m_status = 0x0000;
 }
 
 Spi::~Spi()
@@ -416,6 +418,11 @@ uint32_t Spi::data_average(uint32_t *dtatzz,uint8_t num) /*¶¨ÒåÁ½¸ö²ÎÊý£ºÊý×éÊ×µ
       return data_temp0;
 }
 
+uint16_t Spi::get_status()
+{
+    return m_status;
+}
+
 float Spi::MS1030_Flow(void)
 {
     uint32_t time_up_down_result = 0;
@@ -441,14 +448,16 @@ float Spi::MS1030_Flow(void)
     //GPIOA->POD ^= GPIO_PIN_8;//blink green on board led
     
     Result_status = Read_STAT();
-    CV_LOG("status: 0x%04X\r\n", Result_status);
-    log_info("status: 0x%04X\r\n", Result_status);
+    //CV_LOG("status: 0x%04X\r\n", Result_status);
+    //log_info("status: 0x%04X\r\n", Result_status);
     
-    Result_PW_First = Read_PW_First();
+    m_status = Result_status;
+    
+    //Result_PW_First = Read_PW_First();
     //CV_LOG("PW_First: 0x%04X\r\n", Result_PW_First);
     //log_info("PW_First: 0x%04X\r\n", Result_PW_First);
     
-    Result_PW_STOP1=Read_PW_STOP1();
+    //Result_PW_STOP1=Read_PW_STOP1();
     //CV_LOG("PW_STOP1: 0x%04X\r\n", Result_PW_STOP1);
     //log_info("PW_STOP1: 0x%04X\r\n", Result_PW_STOP1);
     
@@ -501,8 +510,10 @@ float Spi::MS1030_Temper(void)
     Intn_flag = 0;           //glear flag
     
     Result_status = Read_STAT();
-    CV_LOG("status: 0x%04X\r\n", Result_status);
-    log_info("status: 0x%04X\r\n", Result_status);
+    //CV_LOG("status: 0x%04X\r\n", Result_status);
+    //log_info("status: 0x%04X\r\n", Result_status);
+    
+    m_status = Result_status;
     
     for(i=0;i<4;i++)
     {
@@ -538,8 +549,10 @@ float Spi::MS1030_Time_check(void)
     
     Result_status = Read_STAT();
     
-    CV_LOG("status: 0x%04X\r\n", Result_status);
-    log_info("status: 0x%04X\r\n", Result_status);
+    //CV_LOG("status: 0x%04X\r\n", Result_status);
+    //log_info("status: 0x%04X\r\n", Result_status);
+    
+    m_status = Result_status;
     
     cal_reg = Read_Reg(READ_CAL_REG);
         

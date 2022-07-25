@@ -57,6 +57,7 @@ class Spi {
         Do spi_ss;      //cs for spi
         Do spi_rstn;    //ms1030 reset
         Di spi_int;     //ms1030 interrupt output
+        uint16_t m_status;
     
     public:
         void init_pin();
@@ -78,6 +79,7 @@ class Spi {
         uint32_t Read_Reg(uint8_t RegNum);
         void init_int_pin();
         uint32_t data_average(uint32_t *dtatzz,uint8_t num);
+        uint16_t get_status();
     public:
         float MS1030_Flow(void);
         float MS1030_Temper(void);
