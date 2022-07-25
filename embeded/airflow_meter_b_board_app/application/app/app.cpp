@@ -73,8 +73,8 @@ void App::idle_process(void)
     //log_fatal("Hello %s\r\n", "world");
     
     //airflow_meter_b.ms1030.MS1030_Flow();
-    airflow_meter_b.ms1030.MS1030_Temper();       //ok
-    //airflow_meter_b.ms1030.MS1030_Time_check();     //ok
+    //airflow_meter_b.ms1030.MS1030_Temper();       //ok
+    airflow_meter_b.ms1030.MS1030_Time_check();     //ok
     
 	m_state = m_next_state;
     m_next_state = UART_SEND_DATA;

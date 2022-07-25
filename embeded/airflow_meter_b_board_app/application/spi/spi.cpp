@@ -539,7 +539,7 @@ void Spi::MS1030_Time_check(void)
     
     cal_reg = Read_Reg(READ_CAL_REG);
     
-    log_info("cal_reg: 0x%08X-%d-%lf\r\n", cal_reg, cal_reg>>16, 488.28125f);
+    log_info("cal_reg (rate): 0x%08X (%lf)\r\n", cal_reg, (float)cal_reg/65536.0f/488.28125f);
 }
 
 uint8_t Spi::config()
