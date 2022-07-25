@@ -507,7 +507,7 @@ void Spi::MS1030_Temper(void)
         //log_info("pt[%d]: 0x%08X\r\n", i+1, Result_temperature_reg[i]);
     }
     
-    pt1000_res = 1000*(Result_temperature_reg[1]>>16)/(Result_temperature_reg[0]>>16);
+    pt1000_res = 1000.0f*(float)(Result_temperature_reg[1])/(float)(Result_temperature_reg[0]);
     
     for(i=0;i<sizeof(RT_PT1000);i++)
     {
