@@ -568,8 +568,8 @@ uint8_t Spi::config()
     uint32_t REG4 = 0;
     uint8_t  SPI_check_temp = 0;
         
-    REG0=0x118a4930;
-    REG1=0xa00f0000;
+    REG0=0x118a4940;
+    REG1=0xa0640000;
     REG2=0x00000000;
     REG3=0x00000000;
     REG4=0x46cc0500;    
