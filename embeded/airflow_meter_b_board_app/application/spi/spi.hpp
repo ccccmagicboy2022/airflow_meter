@@ -69,6 +69,7 @@ class Spi {
         uint16_t m_status;
         ms1030_reg_t m_reg_analog;
         ms1030_reg_t m_reg_first_wave;
+        float m_flow;
     
     public:
         void init_pin();
@@ -92,7 +93,8 @@ class Spi {
         uint32_t data_average(uint32_t *dtatzz,uint8_t num);
         uint16_t get_status();
     public:
-        float MS1030_Flow(void);
+        void MS1030_Flow(void);
+        float get_flow();
         float MS1030_Temper(void);
         float MS1030_Time_check(void);
 };

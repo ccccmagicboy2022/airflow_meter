@@ -77,7 +77,8 @@ void App::idle_process(void)
     //log_error("Hello %s\r\n", "world");
     //log_fatal("Hello %s\r\n", "world");
     
-    flow = airflow_meter_b.ms1030.MS1030_Flow();        //basic ok
+    airflow_meter_b.ms1030.MS1030_Flow();        //basic ok
+    flow = airflow_meter_b.ms1030.get_flow();
     //log_info("flow: %3.5lf\r\n", flow);
     status = airflow_meter_b.ms1030.get_status();
     //log_info("status reg: 0x%04X\r\n", status);

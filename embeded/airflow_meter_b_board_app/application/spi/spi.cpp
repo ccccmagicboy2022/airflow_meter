@@ -122,7 +122,7 @@ Spi::Spi()
     
     m_reg_analog = {
         .reg0 = 0x118a4940,
-        .reg1 = 0xa0640000,
+        .reg1 = 0xa0400000,
         .reg2 = 0x00000000,
         .reg3 = 0x00000000,
         .reg4 = 0x46cc0500
@@ -130,11 +130,13 @@ Spi::Spi()
     
     m_reg_first_wave = {
         .reg0 = 0x118a4940,
-        .reg1 = 0xa0640000,
+        .reg1 = 0xa0400000,
         .reg2 = 0x83105187,
-        .reg3 = 0x20928480,
+        .reg3 = 0x20928140,
         .reg4 = 0x46cc0500
-    };  
+    };
+    
+    m_flow = 0.0f;
 }
 
 Spi::~Spi()
@@ -415,42 +417,24 @@ uint16_t Spi::Read_PW_STOP1()
 	return ReadData>>5;
 }
 
-uint32_t Spi::data_average(uint32_t *dtatzz,uint8_t num) /*定义两个参数：数组首地址与数组大小*/ 
-{ 
-      uint8_t i,j;
-      uint32_t temp; 
-      uint32_t data_temp0=0;
-      for(i=0;i<num-1;i++) 
-          for(j=i+1;j<num;j++) /*注意循环的上下限*/ 
-              if(dtatzz[i]>dtatzz[j]) 
-              { 
-                   temp=dtatzz[i]; 
-                   dtatzz[i]=dtatzz[j]; 
-                   dtatzz[j]=temp; 
-              }
-      for(i=2;i<num-2;i++)
-          data_temp0=data_temp0+dtatzz[i];
-      data_temp0>>=2;
-      return data_temp0;
-}
-
 uint16_t Spi::get_status()
 {
     return m_status;
 }
 
-float Spi::MS1030_Flow(void)
+void Spi::MS1030_Flow(void)
 {
     uint32_t time_up_down_result = 0;
     uint16_t Result_status = 0;
     uint16_t Result_PW_First = 0;
     uint16_t Result_PW_STOP1 = 0;
     uint8_t i = 0;
-    uint32_t Result_up_reg[8] = {0};
-    uint32_t Result_up_sum = 0;
-    uint32_t Result_down_reg[8] = {0};
-    uint32_t Result_down_sum = 0;
-    uint32_t time_up_down_diff[8] = {0};
+    int32_t Result_up_reg[8] = {0u};
+    //uint32_t Result_up_sum = 0;
+    int32_t Result_down_reg[8] = {0u};
+    //uint32_t Result_down_sum = 0;
+    int32_t time_up_down_diff[8] = {0u};
+    float time_up_down_xx[8] = {0.0f};
     
     float flow_result = 0.0f;
     
@@ -469,13 +453,19 @@ float Spi::MS1030_Flow(void)
     
     m_status = Result_status;
     
-    //Result_PW_First = Read_PW_First();
+    //if (m_status != 0x0090)
+        //return;
+    
+    Result_PW_First = Read_PW_First();
     //CV_LOG("PW_First: 0x%04X\r\n", Result_PW_First);
     //log_info("PW_First: 0x%04X\r\n", Result_PW_First);
     
-    //Result_PW_STOP1=Read_PW_STOP1();
+    Result_PW_STOP1=Read_PW_STOP1();
     //CV_LOG("PW_STOP1: 0x%04X\r\n", Result_PW_STOP1);
     //log_info("PW_STOP1: 0x%04X\r\n", Result_PW_STOP1);
+    
+    //if (Result_PW_First > Result_PW_STOP1)
+        //return;
     
     for(i=0;i<8;i++)
     {
@@ -491,24 +481,26 @@ float Spi::MS1030_Flow(void)
     
     for(i=0;i<8;i++)
     {
-        if(Result_up_reg[i] >= Result_down_reg[i])
-        {
-            time_up_down_diff[i] = Result_up_reg[i] - Result_down_reg[i];
-        }
-        else
-        {
-            time_up_down_diff[i] = Result_down_reg[i] - Result_up_reg[i];
-        }
+        time_up_down_diff[i] = Result_up_reg[i] - Result_down_reg[i];
     }
     
-    time_up_down_result = data_average(time_up_down_diff, 8);
+    for(i=0;i<8;i++)
+    {
+        time_up_down_xx[i] = Result_up_reg[i] * Result_down_reg[i];
+        time_up_down_xx[i] = time_up_down_diff[i]/time_up_down_xx[i];
+    }
+        
+    for(i=0;i<8;i++)
+    {
+        flow_result += time_up_down_xx[i];
+    }
     
-    //CV_LOG("time_up_down_result: 0x%08X\r\n", time_up_down_result);
-    //log_info("time_up_down_result: 0x%08X - %3.5lfus\r\n", time_up_down_result, (float)time_up_down_result/65536.0f);
-    
-    flow_result = (float)time_up_down_result/65536.0f/2.0f;
-    
-    return  flow_result;
+    m_flow = time_up_down_xx[0];
+}
+
+float Spi::get_flow(void)
+{
+    return m_flow;
 }
 
 float Spi::MS1030_Temper(void)
