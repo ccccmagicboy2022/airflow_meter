@@ -119,6 +119,22 @@ Spi::Spi()
     init_int_pin();
     
     m_status = 0x0000;
+    
+    m_reg_analog = {
+        .reg0 = 0x118a4940,
+        .reg1 = 0xa0640000,
+        .reg2 = 0x00000000,
+        .reg3 = 0x00000000,
+        .reg4 = 0x46cc0500
+    };
+    
+    m_reg_first_wave = {
+        .reg0 = 0x118a4940,
+        .reg1 = 0xa0640000,
+        .reg2 = 0x83105187,
+        .reg3 = 0x20928480,
+        .reg4 = 0x46cc0500
+    };  
 }
 
 Spi::~Spi()
@@ -568,11 +584,19 @@ uint8_t Spi::config()
     uint32_t REG4 = 0;
     uint8_t  SPI_check_temp = 0;
         
-    REG0=0x118a4940;
-    REG1=0xa0640000;
-    REG2=0x00000000;
-    REG3=0x00000000;
-    REG4=0x46cc0500;    
+#ifndef FIRST_WAVE
+    REG0 = m_reg_analog.reg0;
+    REG1 = m_reg_analog.reg1;
+    REG2 = m_reg_analog.reg2;
+    REG3 = m_reg_analog.reg3;
+    REG4 = m_reg_analog.reg4;
+#else
+    REG0 = m_reg_first_wave.reg0;
+    REG1 = m_reg_first_wave.reg1;
+    REG2 = m_reg_first_wave.reg2;
+    REG3 = m_reg_first_wave.reg3;
+    REG4 = m_reg_first_wave.reg4;
+#endif    
     
     spi_rstn.high();
     dwt.delay_us(1);

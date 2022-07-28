@@ -49,6 +49,14 @@ enum spi_cmd
     READ_CAL_REG
 };
 
+typedef struct {
+    uint32_t reg0;
+    uint32_t reg1;
+    uint32_t reg2;
+    uint32_t reg3;
+    uint32_t reg4;
+} ms1030_reg_t;
+
 class Spi {
 	public:
         Spi();
@@ -59,6 +67,8 @@ class Spi {
         Do spi_rstn;    //ms1030 reset
         Di spi_int;     //ms1030 interrupt output
         uint16_t m_status;
+        ms1030_reg_t m_reg_analog;
+        ms1030_reg_t m_reg_first_wave;
     
     public:
         void init_pin();

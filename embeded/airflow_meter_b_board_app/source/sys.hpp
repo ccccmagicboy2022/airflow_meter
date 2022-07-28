@@ -8,6 +8,8 @@
 #include "app.hpp"
 #include "systick.hpp"
 
+#define FIRST_WAVE
+
 #endif//_850151B4_3838_44A9_AB19_F24ADF33AD4C_
 
 
