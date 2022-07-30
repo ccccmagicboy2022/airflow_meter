@@ -430,9 +430,9 @@ void Spi::MS1030_Flow(void)
     uint16_t Result_PW_STOP1 = 0;
     uint8_t i = 0;
     int32_t Result_up_reg[8] = {0u};
-    //uint32_t Result_up_sum = 0;
+    uint32_t Result_up_sum = 0;
     int32_t Result_down_reg[8] = {0u};
-    //uint32_t Result_down_sum = 0;
+    uint32_t Result_down_sum = 0;
     int32_t time_up_down_diff[8] = {0u};
     float time_up_down_xx[8] = {0.0f};
     
@@ -471,13 +471,13 @@ void Spi::MS1030_Flow(void)
     {
         Result_up_reg[i] = Read_Reg(READ_TOF_UP_STOP1 + i);
     }
-    //Result_up_sum = Read_Reg(READ_TOF_UP_STOP1 + i);
+    Result_up_sum = Read_Reg(READ_TOF_UP_STOP1 + i);
     
     for(i=0;i<8;i++)
     {
         Result_down_reg[i] = Read_Reg(READ_TOF_DOWN_STOP1 + i);
     }
-    //Result_down_sum = Read_Reg(READ_TOF_DOWN_STOP1 + i);
+    Result_down_sum = Read_Reg(READ_TOF_DOWN_STOP1 + i);
     
     for(i=0;i<8;i++)
     {
