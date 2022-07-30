@@ -83,8 +83,11 @@ void App::idle_process(void)
     status = airflow_meter_b.ms1030.get_status();
     //log_info("status reg: 0x%04X\r\n", status);
     
-    temperature = airflow_meter_b.ms1030.MS1030_Temper();       //ok
+    //airflow_meter_b.ms1030.MS1030_Temper();       //ok
+    //temperature = airflow_meter_b.ms1030.get_temp();
     //log_info("PT1000 temperature: %3.5lf\r\n", temperature);
+    //status = airflow_meter_b.ms1030.get_status();
+    //log_info("status reg: 0x%04X\r\n", status);
     
     //cal_rate = airflow_meter_b.ms1030.MS1030_Time_check();     //ok
     //log_info("cal_rate: %3.5lf\r\n", cal_rate);

@@ -70,6 +70,7 @@ class Spi {
         ms1030_reg_t m_reg_analog;
         ms1030_reg_t m_reg_first_wave;
         float m_flow;
+        float m_temperature;
     
     public:
         void init_pin();
@@ -95,7 +96,8 @@ class Spi {
     public:
         void MS1030_Flow(void);
         float get_flow();
-        float MS1030_Temper(void);
+        void MS1030_Temper(void);
+        float get_temp(void);
         float MS1030_Time_check(void);
 };
 

@@ -129,10 +129,10 @@ Spi::Spi()
     };
     
     m_reg_first_wave = {
-        .reg0 = 0x118a4940,
-        .reg1 = 0xa0400000,
+        .reg0 = 0x1f8a4540,
+        .reg1 = 0xa0200000,
         .reg2 = 0x83105187,
-        .reg3 = 0x20928140,
+        .reg3 = 0x20928c80,
         .reg4 = 0x46cc0500
     };
     
@@ -438,6 +438,15 @@ void Spi::MS1030_Flow(void)
     
     float flow_result = 0.0f;
     
+    float stop1_stop2_diff_up = 0.0f;
+    float stop1_stop2_diff_dwon = 0.0f;
+    
+    float stop2_stop3_diff_up = 0.0f;
+    float stop2_stop3_diff_dwon = 0.0f;
+    
+    float stop3_stop4_diff_up = 0.0f;
+    float stop3_stop4_diff_dwon = 0.0f;
+    
     Write_Order(INITIAL);
     
     Write_Order(START_TOF_RESTART);
@@ -495,7 +504,16 @@ void Spi::MS1030_Flow(void)
         flow_result += time_up_down_xx[i];
     }
     
-    m_flow = time_up_down_xx[0];
+    stop1_stop2_diff_up = (float)(Result_up_reg[1] - Result_up_reg[0])/65536.0f/2.0f;
+    stop1_stop2_diff_dwon = (float)(Result_down_reg[1] - Result_down_reg[0])/65536.0f/2.0f;
+    
+    stop2_stop3_diff_up = (float)(Result_up_reg[2] - Result_up_reg[1])/65536.0f/2.0f;
+    stop2_stop3_diff_dwon = (float)(Result_down_reg[2] - Result_down_reg[1])/65536.0f/2.0f;
+
+    stop3_stop4_diff_up = (float)(Result_up_reg[3] - Result_up_reg[2])/65536.0f/2.0f;
+    stop3_stop4_diff_dwon = (float)(Result_down_reg[3] - Result_down_reg[2])/65536.0f/2.0f;
+    
+    m_flow = time_up_down_xx[2];
 }
 
 float Spi::get_flow(void)
@@ -503,7 +521,12 @@ float Spi::get_flow(void)
     return m_flow;
 }
 
-float Spi::MS1030_Temper(void)
+float Spi::get_temp(void)
+{
+    return m_temperature;
+}
+
+void Spi::MS1030_Temper(void)
 {
     uint16_t Result_status = 0;
     uint32_t Result_temperature_reg[4] = {0};
@@ -541,7 +564,7 @@ float Spi::MS1030_Temper(void)
         }
     }
     
-    return pt1000_c;
+    m_temperature = pt1000_c;
 }
 
 float Spi::MS1030_Time_check(void)
